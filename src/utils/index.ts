@@ -1,6 +1,6 @@
 'use strict'
 
-import { GetResources } from '../interfaces/commonApi'
+import { CharacterResult, EpisodeResult, GetResources } from '../interfaces/commonApi'
 import customAxios from '../services/customAxios'
 
 const endpointBuilder = (baseUrl:string, numPage:number) => {
@@ -40,7 +40,7 @@ export const charCounter = (string :string, expresion:any):number => {
   */
 export const stringNames = (resource:GetResources[]) : string => {
   return resource
-    .flatMap((item) => item.results)
+    .flatMap((item:any) => item.results)
     .map((result) => result.name)
     .toString()
 }
@@ -51,4 +51,26 @@ export const stringNames = (resource:GetResources[]) : string => {
 export const formatTime = (time:any):string => {
   time = time.toString()
   return `${time.charAt()}s ${time.charAt([1])}${time.charAt([2])}ms`
+}
+
+/**
+ * @param {Object[]} episodes
+ * @param {Object[]} characters
+ * @returns {Object[]} array with name, episode and character fields
+ */
+export const populateEpisodesAndCharacters = (episodes:EpisodeResult[], characters:CharacterResult[]) => {
+  episodes.forEach((episode) => {
+    let setOriginNames = new Set(
+      episode.characters
+        .map((character:string) => characters.find((item) => item.id === Number(character.split('/').pop())))
+        .map((item) => item?.origin?.name || null)
+    )
+    episode.characters = Array.from(setOriginNames)
+
+    return episode
+  })
+
+  return episodes.map((item) => {
+    return { name: item.name, episode: item.episode, characters: item.characters }
+  })
 }

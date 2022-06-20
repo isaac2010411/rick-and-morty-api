@@ -20,7 +20,16 @@ export interface CharacterResult extends BaseReults{
   image:string,
   episode: string[],
 }
+export interface EpisodeResult extends BaseReults {
+  air_date: string,
+  episode: string,
+  characters: string[],
+}
+export interface LocationResult extends BaseReults {
+  dimension: string,
+  residents: string[],
+}
 export interface GetResources {
   info:InfoResponse,
-  results:CharacterResult[] 
+  results:CharacterResult[] | EpisodeResult[] | LocationResult[]
 }

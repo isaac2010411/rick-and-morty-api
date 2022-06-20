@@ -3,8 +3,10 @@
 import express from 'express'
 const router = express.Router()
 
-const charRoutes = require('./charRoutes')
+import charRoutes from './charRoutes'
+import episodeRoutes from './episodeRoutes'
 
 router.use('/char', charRoutes)
+router.use('/episode', episodeRoutes)
 
 export default  router

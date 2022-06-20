@@ -1,10 +1,9 @@
 'use strict'
 
 import express from 'express'
-const router = express.Router()
-
 import charCounterController from '../controllers/char-counter-controller'
+const router = express.Router()
 
 router.route('/').get(charCounterController)
 
-module.exports = router
+export default router

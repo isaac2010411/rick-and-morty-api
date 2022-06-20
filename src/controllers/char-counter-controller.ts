@@ -6,16 +6,16 @@ import {  getAllData, charCounter, stringNames, formatTime } from '../utils'
 // @route   GET /api/v1/char
 // @access  All users
 const charCounterController = async  (req: Request, res: Response, next: NextFunction) => {
-  let start = Date.now()
+  const start = Date.now()
   
-  let [locationData, characterData, episodeData] = await Promise.all([
+  const [locationData, characterData, episodeData] = await Promise.all([
     getAllData('/location'),
     getAllData('/character'),
     getAllData('/episode'),
   ])
 
-  let end = Date.now()
-  let time = end - start
+  const end = Date.now()
+  const time = end - start
 
   res.status(200).json({
   exercise_name: 'Char counter',
