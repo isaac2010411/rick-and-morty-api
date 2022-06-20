@@ -10,7 +10,7 @@ import {  getAllData,populateEpisodesAndCharacters, formatTime } from '../utils'
 const episodeLocationController = async  (req: Request, res: Response, next: NextFunction) => {
   const start = Date.now()
 
-  const [characterData, episodeData]= await Promise.all([getAllData('/character'), getAllData('/episode')])
+  const [characterData, episodeData] = await Promise.all([getAllData('/character'), getAllData('/episode')])
 
   const episodeResults: EpisodeResult[] = episodeData.flatMap((item:any) => item.results )
   const characterResults: CharacterResult[] = characterData.flatMap((item:any) => item.results)

@@ -1,7 +1,4 @@
-import express, {
-  Application, NextFunction
-} from 'express' 
-
+import express, { Application } from 'express' 
 import dotenv from 'dotenv'
 import path from 'path'
 import cors from 'cors'
