@@ -3,13 +3,26 @@
 import { BaseReults, CharacterResult, EpisodeResult, GetResources, PopulatedEpisodesAndCharacters } from '../interfaces/commonApi'
 import customAxios from '../services/customAxios'
 
+ /**
+  * @param baseUrl
+  * @param numPage
+  * @returns build url with baseUrl and numPage
+  */
 const endpointBuilder = (baseUrl :string, numPage :number) :string => {
   return `${baseUrl}?page=${numPage}`
 }
+ /**
+  * @param url
+  * @returns Array with resources
+  */
 const getResources = async (url :string) :Promise<GetResources> => {
   const { info, results } = await customAxios(url)
   return { info, results }
 }
+ /**
+  * @param query
+  * @returns Array with all results of pages
+  */
 export const getAllData = async (query :string) :Promise<GetResources[]>=> {
   const baseUrl = process.env.RICK_AND_MORTY_API + query
   const firstResponse = await getResources(baseUrl)
@@ -51,7 +64,6 @@ export const formatTime = (time :number) :string => {
  const value = time.toString()
   return `${value.charAt(0)}s ${value.charAt(1)}${value.charAt(2)}ms`
 }
-
 /**
  * @param  episodes
  * @param characters
