@@ -5,7 +5,7 @@ import {  getAllData, charCounter, stringNames, formatTime } from '../utils'
 // @desc    Get char counter
 // @route   GET /api/v1/char
 // @access  All users
-const charCounterController = async  (req: Request, res: Response, next: NextFunction) => {
+const charCounterController = async  (req: Request, res: Response, next: NextFunction): Promise<void> => {
   const start = Date.now()
   
   const [locationData, characterData, episodeData] = await Promise.all([

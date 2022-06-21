@@ -1,4 +1,4 @@
-interface BaseReults {
+export interface BaseReults {
   id: number,
   name:string,
   url: string,
@@ -36,7 +36,7 @@ export interface LocationResult extends BaseReults {
 }
 export interface GetResources {
   info:InfoResponse,
-  results:CharacterResult[] | EpisodeResult[] | LocationResult[]
+  results:(CharacterResult | EpisodeResult | LocationResult)[]
 }
 interface CharResult {
   char: string;
