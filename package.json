@@ -13,7 +13,11 @@
     "preset": "ts-jest",
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
-      "/node_modules/"
+      "/node_modules/",
+      "./__tests__/config/"
+    ],
+    "setupFiles": [
+      "./__tests__/config/setup.ts"
     ]
   },
   "author": "Isaac Figueroa",
