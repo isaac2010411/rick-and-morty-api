@@ -44,7 +44,7 @@ To run this project, you will need to add the following environment variables to
 #### Get char counter
 
 ```http
-  GET /api/char
+  GET /api/v1/char
 ```
 #### exercise 1
 
@@ -52,7 +52,7 @@ To run this project, you will need to add the following environment variables to
 #### Get item
 
 ```http
-   GET /api/episode
+   GET /api/v1/episode
 ```
 #### exercise 2
 
